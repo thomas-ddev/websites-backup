@@ -11,8 +11,8 @@ MAILMESSAGE="Une vérification de l'état du serveur s'impose : un fichier de sa
 TIMESTAMP=$(date +%F)
 
 # Repertoire contenant la backup temporaire et répertoire à sauvegarder
-BACKUPDIR="/var/www/backups/websites"
-TMPBACKUP="/var/www"
+BACKUPDIR="/var/www/."
+TMPBACKUP="/var/www/backups/websites"
 
 # Si le repertoire temporaire des backup n'existe pas, le creer
 if [ ! -d "$TMPBACKUP" ]; then
@@ -30,4 +30,4 @@ fi
 rm $TMPBACKUP/*
 
 # Creer une backup en local
-tar czf $TMPBACKUP/$TIMESTAMP.tar.gz $BACKUPDIR/.
+tar czf $TMPBACKUP/$TIMESTAMP.tar.gz $BACKUPDIR
