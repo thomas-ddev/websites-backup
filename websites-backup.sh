@@ -10,8 +10,9 @@ MAILMESSAGE="Une vérification de l'état du serveur s'impose : un fichier de sa
 # Recuperer la date du jour
 TIMESTAMP=$(date +%F)
 
-# Repertoire contenant la backup temporaire
-TMPBACKUP="/var/www/backups/websites"
+# Repertoire contenant la backup temporaire et répertoire à sauvegarder
+BACKUPDIR="/var/www/backups/websites"
+TMPBACKUP="/var/www"
 
 # Si le repertoire temporaire des backup n'existe pas, le creer
 if [ ! -d "$TMPBACKUP" ]; then
@@ -29,4 +30,4 @@ fi
 rm $TMPBACKUP/*
 
 # Creer une backup en local
-tar czf $TMPBACKUP/dk-$TIMESTAMP.tar.gz /var/www/. /home/awa/clients/.
+tar czf $TMPBACKUP/$TIMESTAMP.tar.gz $BACKUPDIR/.
